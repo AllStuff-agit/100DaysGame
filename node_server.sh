@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Node.js 애플리케이션 실행 파일 및 포트 설정
-APP_DIR="/home/ec2-user/100DaysGame"  # 본인 프로젝트의 Node.js 앱 경로
+APP_DIR="/home/user/100DaysGame"  # 본인 프로젝트의 Node.js 앱 경로
 APP_FILE="app.js"  # 실행할 Node.js 파일
 NODE_EXEC="node"  # Node.js 실행 명령어
 PORT="3000"
