@@ -1,0 +1,319 @@
+/* 기존 스타일 유지 */
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+body {
+    font-family: 'Jua', sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 1s ease-in-out;
+    overflow: hidden; /* 별이 화면 밖으로 나가지 않도록 */
+}
+
+.container {
+    width: 80%;  /* 🔹 기존 85% → 80%로 축소 */
+    max-width: 320px;  /* 🔹 기존 350px → 320px로 축소 */
+    background: white;
+    padding: 15px;  /* 🔹 기존 20px → 15px로 축소 */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Jua', sans-serif;
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 제목과 설명 */
+h1 {
+    color: #ff5e78;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #ff5e78;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* 📌 버튼 스타일 수정 */
+button {
+    width: 80%;  /* 🔹 버튼 너비 조정 */
+    max-width: 300px;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 10px 0;  /* 🔹 버튼 간격 추가 */
+    text-align: center;
+    display: block;
+}
+
+button:hover {
+    background: linear-gradient(to right, #ff5e78, #ff758c);
+}
+
+/* 부드러운 애니메이션 효과 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📌 강조 효과 */
+.highlight {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff0000;
+    animation: pulse 1s infinite alternate;
+}
+
+/* 📌 부드러운 나타나는 효과 */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* 📌 깜빡이는 효과 */
+@keyframes pulse {
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* 📌 "게임 시작" 버튼 강조 */
+#startGame {
+    font-size: 22px;
+    padding: 14px;
+    /* background: linear-gradient(to right, #ff512f, #dd2476);
+    animation: pulse 1s infinite alternate; */
+}
+
+/*===================================================*/
+
+/* 📌 보물찾기 퍼즐 (4개 버튼) */
+.grid-4 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.grid-4 button {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background: #ffdf7e;
+    border: 2px solid #d4a017;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s ease-in-out;
+}
+
+.grid-4 button:hover {
+    background: #ffc94a;
+}
+
+/* 📌 보물을 찾았을 때 애니메이션 효과 */
+.found {
+    background: #4caf50 !important;
+    color: white;
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 📌 틀렸을 때 화면에 흔들리는 효과 */
+@keyframes wrongShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-container {
+    animation: wrongShake 0.3s ease-in-out;
+}
+
+/*===================================================*/
+
+/* 📌 카드 게임 컨테이너 (카드 크기에 맞춰 자동 조정 & 중앙 정렬) */
+.card-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* ✅ 세로 중앙 정렬 */
+    justify-content: center;  /* ✅ 가로 중앙 정렬 */
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+/* 📌 6x6 카드 게임 그리드 (완전한 중앙 정렬 적용) */
+.grid-6x6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+    padding: 10px;
+    
+    flex-wrap: wrap;  /* ✅ 그리드 내부 요소를 균등 정렬 */
+    justify-content: center;  /* ✅ 가로 중앙 정렬 */
+    align-items: center;  /* ✅ 세로 중앙 정렬 */
+    margin: auto;
+    width: 100%;  /* ✅ 전체 너비를 부모 컨테이너에 맞춤 */
+    max-width: 320px;  /* ✅ 필요 시 최대 너비 제한 */
+}
+
+/* 📌 카드 버튼 (6x6용 - 크기 조정) */
+.card-6x6 {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;  /* ✅ 카드 내부 요소 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2px;  /* ✅ 카드 간격 조정 */
+}
+
+/* 📌 카드 기본 스타일 */
+.card {
+    background: #ffdf7e;
+    border: 2px solid #d4a017;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card:hover {
+    background: #ffc94a;
+}
+
+/* 📌 짝을 맞춘 카드 스타일 */
+.matched {
+    background: #4caf50 !important;  /* ✅ 초록색 배경 (맞춘 카드 표시) */
+    color: white;
+    transform: scale(1.1);  /* ✅ 살짝 커지는 효과 */
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+/* ============================================ */
+
+/* 📌 컨테이너 내부 텍스트 크기 조정 */
+.container h2 {
+    font-size: 20px;  /* 🔹 기존보다 조금 작게 (기존 22px → 20px) */
+}
+
+.container p {
+    font-size: 14px;  /* 🔹 기존보다 조금 작게 (기존 16px → 14px) */
+}
+
+/* 📌 입력창 설명 텍스트 크기 조정 */
+.input-box p {
+    font-size: 14px;  /* 🔹 기존보다 작게 */
+}
+
+/* 📌 키패드 버튼 내부 숫자 크기 */
+.keypad button {
+    font-size: 14px;  /* 🔹 기존 16px → 14px로 축소 */
+}
+
+/* 📌 삭제(⟵) 및 확인(✔) 버튼 크기 */
+.clear, .submit {
+    font-size: 14px;  /* 🔹 기존 16px → 14px로 축소 */
+}
+
+.question-box p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+/* 📌 입력창 크기 축소 */
+.input-box input {
+    width: 90%;
+    padding: 6px;  /* 🔹 기존 8px → 6px로 축소 */
+    font-size: 18px;  /* 🔹 기존 20px → 18px로 축소 */
+    text-align: center;
+    border: 2px solid #ff758c;
+    border-radius: 8px;
+}
+
+/* 📌 키패드 크기 축소 */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;  /* 🔹 기존 4px → 3px로 조정 */
+    margin-top: 5px;
+    max-width: 160px;  /* 🔹 기존 180px → 160px로 축소 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 📌 키패드 버튼 크기 조정 */
+.keypad button {
+    width: 40px;  /* 🔹 기존 45px → 40px로 축소 */
+    height: 40px;  /* 🔹 기존 45px → 40px로 축소 */
+    font-size: 16px;  /* 🔹 기존 18px → 16px로 축소 */
+    font-weight: bold;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 📌 버튼 호버 효과 */
+.keypad button:hover {
+    background: linear-gradient(to right, #ff5e78, #ff758c);
+}
+
+/* 📌 삭제(⟵) 및 확인(✔) 버튼 크기 조정 */
+.clear, .submit {
+    width: 50px;  /* 🔹 기존 55px → 50px로 축소 */
+    height: 40px;
+}
+.clear {
+    background: #ffcc00 !important;
+}
+.submit {
+    background: #4caf50 !important;
+}
+
+#finalPlace {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #222;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
