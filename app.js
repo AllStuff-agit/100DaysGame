@@ -19,7 +19,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Server running at: http://exapmle.com`);
 });
-
-
-// 서버 시작 명령어: node server.js
-// node_server.sh를 이용한 background 실행: bash node_server.sh start
