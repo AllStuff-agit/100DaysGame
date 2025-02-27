@@ -15,6 +15,9 @@ cd <project_directory>
 npm install
 ```
 
+## ✍️ 수정할 부분
+- node_server.js의 APP_DIR
+
 ## 🚀 애플리케이션 실행
 ### node_server.sh 를 이용한 백그라운드 실행 및 종료
 ```bash
