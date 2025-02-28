@@ -1,4 +1,4 @@
-document.getElementById("startGame").addEventListener("click", startTwelfthQuiz);
+document.getElementById("startGame").addEventListener("click", startFirstQuiz);
 
 /* 📌 첫 번째 퀴즈 */
 function startFirstQuiz() {
@@ -79,8 +79,8 @@ function checkSecondAnswer(answer) {
 /* 📌 2단계: 보물찾기 */
 function startTreasureHunt() {
     let possibleSpots = [0, 1, 2, 3]; // 4개의 장소
-    // let treasureIndex = Math.floor(Math.random() * 4); // 4개 중 1개 보물 설정
-    let treasureIndex = 0
+    let treasureIndex = Math.floor(Math.random() * 4); // 4개 중 1개 보물 설정
+    // let treasureIndex = 0
 
     document.body.innerHTML = `
         <div class="container">
@@ -247,7 +247,7 @@ function startCardGame(size = 6) {
                   "👑", "🎀", "🍰", "🍀", "❤️‍🔥", "☕", "📺", "🎄", "💓", "💖", "🦑", "🕊️", "🍊", "🍕", "💋", "🐻", "📞", "🎤"];
     let selectedEmojis = emojis.slice(0, pairs); 
     cardSymbols = [...selectedEmojis, ...selectedEmojis]; // 이모지 쌍 만들기
-    // cardSymbols.sort(() => Math.random() - 0.5);  // 랜덤 섞기
+    cardSymbols.sort(() => Math.random() - 0.5);  // 랜덤 섞기
 
     document.body.innerHTML = `
         <div class="container card-game-container">  <!-- ✅ 카드 게임에서만 크기 조절 -->
